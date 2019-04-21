@@ -3,5 +3,10 @@ class TwittersController < ApplicationController
   end
 
   def new
+    @twitter = Twitter.new
+  end
+
+  def create
+    Twitter.create(content: params[:twitter][:content])
   end
 end
