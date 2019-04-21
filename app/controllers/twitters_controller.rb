@@ -1,5 +1,6 @@
 class TwittersController < ApplicationController
   def index
+    @Twitters = Twitter.all
   end
 
   def new
@@ -7,13 +8,13 @@ class TwittersController < ApplicationController
   end
 
   def create
-    Twitter.create(blog_params)
+    Twitter.create(twitter_params)
     redirect_to new_twitter_path
   end
 
   private
 
-  def blog_params
-    params.require(:blog).permit(:title, :content)
+  def twitter_params
+    params.require(:twitter).permit(:content)
   end
 end
