@@ -1,6 +1,6 @@
 class TwittersController < ApplicationController
   def index
-    @Twitters = Twitter.all
+    @twitters = Twitter.all
   end
 
   def new
@@ -8,8 +8,16 @@ class TwittersController < ApplicationController
   end
 
   def create
-    Twitter.create(twitter_params)
-    redirect_to new_twitter_path
+    @twitter = Twitter.create(twitter_params)
+    if @twitter.save
+     redirect_to twitters_path, notice:"ブログを作成しました！"
+    else
+     render 'new'
+    end
+  end
+
+  def show
+    @twitter = Twitter.find(params[:id])
   end
 
   private
