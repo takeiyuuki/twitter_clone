@@ -6,7 +6,11 @@ class TwittersController < ApplicationController
   end
 
   def new
-    @twitter = Twitter.new
+    if params[:back]
+      @twitter = Twitter.new(twitter_params)
+    else
+      @twitter = Twitter.new
+    end
   end
 
   def create
@@ -27,7 +31,7 @@ class TwittersController < ApplicationController
   end
 
   def update
-    # @twitter = Twitter.find(params[:id])
+     @twitter = Twitter.find(params[:id])
     if @twitter.update(twitter_params)
       redirect_to twitters_path, notice: "ブログを編集しました！"
     else
@@ -42,6 +46,7 @@ class TwittersController < ApplicationController
 
   def confirm
     @twitter = Twitter.new(twitter_params)
+    render :new if @twitter.invalid?
   end
 
   private
