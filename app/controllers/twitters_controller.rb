@@ -1,7 +1,8 @@
 class TwittersController < ApplicationController
+  before_action :set_twitter, only: [:show, :edit, :update, :destroy]
+
   def index
     @twitters = Twitter.all
-    binding.pry
   end
 
   def new
@@ -18,25 +19,38 @@ class TwittersController < ApplicationController
   end
 
   def show
-    @twitter = Twitter.find(params[:id])
+    # @twitter = Twitter.find(params[:id])
   end
 
   def edit
-    @twitter = Twitter.find(params[:id])
+    # @twitter = Twitter.find(params[:id])
   end
 
   def update
-    @blog = Blog.find(params[:id])
-    if @blog.update(blog_params)
-      redirect_to blogs_path, notice: "ブログを編集しました！"
+    # @twitter = Twitter.find(params[:id])
+    if @twitter.update(twitter_params)
+      redirect_to twitters_path, notice: "ブログを編集しました！"
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    @twitter.destroy
+    redirect_to twitters_path, notice:"ブログを削除しました！"
+  end
+
+  def confirm
+    @twitter = Twitter.new(twitter_params)
   end
 
   private
 
   def twitter_params
     params.require(:twitter).permit(:content)
+  end
+
+  def set_twitter
+    @twitter = Twitter.find(params[:id])
   end
 end
