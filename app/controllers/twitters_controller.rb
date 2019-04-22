@@ -1,6 +1,7 @@
 class TwittersController < ApplicationController
   def index
     @twitters = Twitter.all
+    binding.pry
   end
 
   def new
@@ -18,6 +19,19 @@ class TwittersController < ApplicationController
 
   def show
     @twitter = Twitter.find(params[:id])
+  end
+
+  def edit
+    @twitter = Twitter.find(params[:id])
+  end
+
+  def update
+    @blog = Blog.find(params[:id])
+    if @blog.update(blog_params)
+      redirect_to blogs_path, notice: "ブログを編集しました！"
+    else
+      render 'edit'
+    end
   end
 
   private
