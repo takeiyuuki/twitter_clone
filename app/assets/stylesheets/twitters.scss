@@ -28,21 +28,19 @@
 
 .header {
   position: fixed;
+  // margin-top: -100px;
   top: 0px;
   background-color: #3bbdff;
   width: 100%;
   height: 70px;
   text-decoration: none;
+  float:left;
 }
 
 .twitter_first{
   font-size: 40px;
   margin-top: 38px;
   text-align: center;
-}
-
-.header{
-  float:left;
 }
 
 .top_menu a{
@@ -89,6 +87,28 @@ margin: 0 auto;
 background-color: #f1f1f1
 }
 
+.edit_btn{
+  border: 1px solid #000000;
+  border-radius: 5px;
+  background-color: #18ffd1
+}
+.delete_btn{
+  border: 1px solid #000000;
+  border-radius: 5px;
+  background-color: #ff5757
+  // text-decoration: none;
+}
+.edit_name{
+  color: black;
+  text-decoration: none;
+  padding: 10px 20px;
+}
+
+.delete_name{
+  color: black;
+  text-decoration: none;
+  padding: 10px 20px;
+}
 //
 // .twitter_title{
 //   border-radius: 5px;
