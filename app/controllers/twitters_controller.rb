@@ -49,6 +49,9 @@ class TwittersController < ApplicationController
     render :new if @twitter.invalid?
   end
 
+  def surface
+  end
+
   private
 
   def twitter_params
