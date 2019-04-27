@@ -8,11 +8,15 @@
   </tr>
 
 <% @twitters.each do |twitter| %>
+
   <tr>
-    <td><%= twitter.content %></td>
-    <!-- <td><%= link_to '詳細を確認する', twitter_path(twitter.id) %></td> -->
-    <td><%= link_to "ツイートを編集する", edit_twitter_path(twitter.id), data: { confirm: '本当に編集していいですか？' } %></td>
-    <td><%= link_to 'ブログを削除する', twitter_path(twitter.id), data: { confirm: '本当に削除していいですか？' }, method: :delete %></td>
+    <div class="content_view">
+      <td><%= twitter.content %></td>
+    </div>
+    <div class="edit">
+      <td class="edit_btn"><%= link_to "編集", edit_twitter_path(twitter.id), data: { confirm: '本当に編集していいですか？' }, class: 'edit_name' %></td>
+      <td class="delete_btn"><%= link_to '削除', twitter_path(twitter.id), data: { confirm: '本当に削除していいですか？' }, method: :delete, class: 'delete_name' %></td>
+    </div>
   </tr>
 <% end %>
 </table>
