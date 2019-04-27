@@ -1,22 +1,3 @@
-<!-- <%= form_with(model: @twitter, local: true) do |form| %>
-<% if @twitter.errors.any? %>
-   <div id="error_explanation">
-     <h2><%= @twitter.errors.count %>件のエラーがあります。</h2>
-     <ul>
-
-     <% @twitter.errors.full_messages.each do |msg| %>
-       <li><%= msg %></li>
-     <% end %>
-     </ul>
-   </div>
- <% end %>
-
-  <div class="twitter_content">
-    <%= form.label :content %>
-    <%= form.text_field :content %>
-  </div>
-  <%= form.submit %>
-<% end %> -->
-<h2>ブログを作成する</h2>
+<h2 class="twitter_first"><strong>新規投稿画面<strong></h2>
 
   <%= render 'form' %>
