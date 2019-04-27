@@ -12,10 +12,10 @@
   <% end %>
 
   <div class="twitter_title">
-    <%= form.label :content %>
-    <%= form.text_field :content %>
+    <%= form.label :本文： %>
+    <%= form.text_field :content, class: 'content_name' %>
   </div>
-  <%= form.submit %>
+  <div class="twitter_submit"><%= form.submit %></div>
 <% end %>
 
-<%= link_to "ツイート一覧画面にもどる", twitters_path %>
+<!-- <%= link_to "ツイート一覧画面にもどる", twitters_path %> -->
