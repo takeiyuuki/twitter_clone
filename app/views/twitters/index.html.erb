@@ -1,16 +1,16 @@
-<h1>ツイート一覧</h1>
+<h1 id="title">ツイート一覧</h1>
 
 <p><%= notice %></p>
 
 <table>
   <tr>
-    <th>内容</th>
+    <th class="index_top">つぶやき一覧</th>
   </tr>
 
 <% @twitters.each do |twitter| %>
   <tr>
     <td><%= twitter.content %></td>
-    <td><%= link_to '詳細を確認する', twitter_path(twitter.id) %></td>
+    <!-- <td><%= link_to '詳細を確認する', twitter_path(twitter.id) %></td> -->
     <td><%= link_to "ツイートを編集する", edit_twitter_path(twitter.id), data: { confirm: '本当に編集していいですか？' } %></td>
     <td><%= link_to 'ブログを削除する', twitter_path(twitter.id), data: { confirm: '本当に削除していいですか？' }, method: :delete %></td>
   </tr>

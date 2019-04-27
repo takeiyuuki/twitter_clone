@@ -8,8 +8,20 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
+
+    <header class="header">
+      <nav>
+        <div class="top_menu clearfix">
+          <a href="http://localhost:3000/twitters/surface">HOME</a>
+          <a href="http://localhost:3000/twitters">つぶやき一覧</a>
+          <a href="http://localhost:3000/twitters/new">新規投稿</a>
+        </div>
+      </nav>
+    </header>
     <%= yield %>
+    <footer class="footer">
+      <p>  Dive into Code test application </p>
+    </footer>
   </body>
 </html>
