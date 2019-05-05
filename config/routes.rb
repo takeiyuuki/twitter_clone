@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     collection do
       post :confirm
       get :surface
-      root to: 'twitters#surface'
+      # root to: 'twitters#surface'
     end
   end
 end
