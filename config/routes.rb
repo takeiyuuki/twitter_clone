@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
+  root to: 'twitters#surface'
   resources :twitters do
     collection do
       post :confirm
       get :surface
-      # root to: 'twitters#surface'
+
     end
   end
 end
