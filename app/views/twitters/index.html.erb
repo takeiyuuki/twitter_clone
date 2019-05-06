@@ -1,4 +1,27 @@
-<h1 id="title">ツイート一覧</h1>
+<%# <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#gnavi">
+        <span class="sr-only">Bootstrap</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">【bootstrap課題】
+
+      </a>
+    </div>
+    <div id="gnavi" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="https://frozen-fjord-10956.herokuapp.com/twitters/surface">top</a></li>
+        <li><a href="https://frozen-fjord-10956.herokuapp.com/twitters/">つぶやき一覧</a></li>
+        <li><a href="https://frozen-fjord-10956.herokuapp.com/twitters/new">新規つぶやき</a></li>
+      </ul>
+    </div>
+  </div>
+</nav> %>
+
+<%# <h1 id="title">ツイート一覧</h1> %>
 
 <p><%= notice %></p>
 
@@ -10,17 +33,21 @@
 <% @twitters.each do |twitter| %>
 
   <tr>
-    <div class="content_view">
-      <td><%= twitter.content %></td>
-    </div>
-    <div class="edit">
-      <td class="edit_btn"><%= link_to "編集", edit_twitter_path(twitter.id), data: { confirm: '本当に編集していいですか？' }, class: 'edit_name' %></td>
-      <td class="delete_btn"><%= link_to '削除', twitter_path(twitter.id), data: { confirm: '本当に削除していいですか？' }, method: :delete, class: 'delete_name' %></td>
-    </div>
+    <td class="twitter_contents"><%= twitter.content %></td>
+    <td class="btn_edit">
+      <%= form_with(model: @twitter, url: edit_twitter_path(twitter.id), local: true, method: 'get') do |form| %>
+        <%= link_to '編集', edit_twitter_path(twitter.id), class: 'btn btn-warning' %>
+      <% end %>
+    </td>
+    <td class="btn_destroy">
+      <%= form_with(model: @twitter, local: true, method: 'get') do |form| %>
+        <%= link_to '削除', twitter_path(twitter.id), method: :delete, data: { confirm: '本当に削除していいですか？' }, class: 'btn btn-danger' %>
+      <% end %>
+    </td>
   </tr>
 <% end %>
 </table>
 
 <br>
 
-<%= link_to '新しくツイッターを投稿する', new_twitter_path %>
+<%= link_to '新規つぶやき', new_twitter_path %>
