@@ -4,7 +4,6 @@
 .twitter_title {
   color: #0000ff;
   font-size: 20px;
-  text-align: center;
 }
 
 .navbar-default .navbar-brand {
@@ -29,12 +28,32 @@
   font-size: 30px;
 }
 
-.twitter_surface {
-  color: #00008b;
-  font-size: 40px;
-  text-align: center;
-  margin-top: 223px;
-  // margin-left: auto;
+.cover-area .cover-image img {
+}
+
+.cover-area,
+.cover-image,
+img {
+}
+
+.cover-area {
+  padding: 150px 0 50px 0;
+  .cover-image {
+    img {
+      width: 600px;
+      height: 280px;
+      object-fit: cover;
+      @media only screen and (max-width: 766px) {
+        width: 300px;
+        height: 140px;
+      }
+    }
+  }
+  .twitter_surface {
+    color: #00008b;
+    font-size: 40px;
+    // margin-left: auto;
+  }
 }
 // .twitter_title p{
 //   // border-radius: 1px;
@@ -54,13 +73,11 @@
 .twitter_first {
   font-size: 40px;
   margin-top: 38px;
-  text-align: center;
 }
 
 .top_menu a {
   float: left;
   display: block;
-  text-align: center;
   font-size: 1rem;
   color: #ffffff;
   text-decoration: none;
@@ -76,10 +93,6 @@
   clear: both;
 }
 
-.twitter_submit {
-  text-align: center;
-}
-
 .footer {
   background-color: black;
   position: fixed;
@@ -90,7 +103,6 @@
 
 .footer p {
   color: white;
-  text-align: center;
   font-size: 1rem;
   font-weight: lighter;
   position: relative;
@@ -101,7 +113,15 @@
 // 左端の余白を無くした
 body {
   margin: 0 auto;
-  background-color: #f1f1f1;
+  text-align: center;
+  position: relative;
+  top: 50px;
+  left: 10px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 2;
+  color: #333;
+  background-color: #fff;
 }
 
 .edit_btn {
@@ -151,21 +171,6 @@ li {
   // padding-bottom: 30px;
 }
 
-body {
-  position: relative;
-  top: 50px;
-  left: 10px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  line-height: 2;
-  color: #333;
-  background-color: #fff;
-}
-
-body {
-  text-align: center;
-}
-
 .edit_btn {
   border: 1px solid white;
   border-radius: 10px;
@@ -213,7 +218,6 @@ body {
   display: inline-block;
   margin-bottom: 0;
   font-weight: 400;
-  text-align: center;
   white-space: nowrap;
   vertical-align: middle;
   -ms-touch-action: manipulation;
@@ -243,21 +247,7 @@ input {
   line-height: normal;
 }
 
-.send {
-  text-align: center;
-}
-
-img {
-  text-align: center;
-}
-
 // @media (min-width: 768px) {
 //   position: relative;
 //   top: 30px;
 // }
-
-img {
-  // max-width: 100%;
-  position: relative;
-  top: -80px;
-}
