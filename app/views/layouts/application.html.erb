@@ -37,6 +37,7 @@
     </header>
 
  <%# フラッシュメッセージ追記 %>
+ <br>
     <% flash.each do |key, value| %>
         <%= content_tag(:div, value, class: "#{key}") %>
     <% end %>
