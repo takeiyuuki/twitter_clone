@@ -35,6 +35,12 @@
   </div>
 </nav>
     </header>
+
+ <%# フラッシュメッセージ追記 %>
+    <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "#{key}") %>
+    <% end %>
+
     <div class="container-fluid">
       <div class="row main">
         <%= yield %>
