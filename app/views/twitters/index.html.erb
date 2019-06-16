@@ -23,7 +23,7 @@
 
 <%# <h1 id="title">ツイート一覧</h1> %>
 
-<p><%= notice %></p>
+
 
 <table>
   <tr>
@@ -31,19 +31,25 @@
   </tr>
 
 <% @twitters.each do |twitter| %>
-
   <tr>
     <td class="twitter_contents"><%= twitter.content %></td>
-    <td class="btn_edit">
-      <%= form_with(model: @twitter, url: edit_twitter_path(twitter.id), local: true, method: 'get') do |form| %>
+
+      <td class="btn_show">
+        <%= link_to '詳細', twitter_path(twitter.id), class: 'btn btn-check' %>
+      </td>
+
+     <% if twitter.user_id == current_user.id %>
+      <td class="btn_edit">
+        <%= form_with(model: @twitter, url: edit_twitter_path(twitter.id), local: true, method: 'get') do |form| %>
         <%= link_to '編集', edit_twitter_path(twitter.id), class: 'btn btn-warning' %>
-      <% end %>
-    </td>
-    <td class="btn_destroy">
-      <%= form_with(model: @twitter, local: true, method: 'get') do |form| %>
+        <% end %>
+      </td>
+      <td class="btn_destroy">
+        <%= form_with(model: @twitter, local: true, method: 'get') do |form| %>
         <%= link_to '削除', twitter_path(twitter.id), method: :delete, data: { confirm: '本当に削除していいですか？' }, class: 'btn btn-danger' %>
-      <% end %>
-    </td>
+        <% end %>
+      </td>
+     <% end %>
   </tr>
 <% end %>
 </table>

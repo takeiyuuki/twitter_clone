@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
+  before_action :require_login, only: %i[show edit destroy]
+
   def new
     @user = User.new
   end
@@ -16,6 +18,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @favorite_twitters = @user.favorite_twitters
   end
 
   private
@@ -23,5 +26,12 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :password,
                                  :password_confirmation)
+  end
+
+  def require_login
+    unless logged_in?
+      flash[:error] = 'forbidden user'
+      redirect_to new_session_path
+    end
   end
 end

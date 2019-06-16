@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   end
   resources :sessions, only: %i[new create destroy]
   resources :users
+  resources :favorites, only: %i[create destroy]
 end

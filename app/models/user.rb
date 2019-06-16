@@ -2,6 +2,8 @@
 
 class User < ApplicationRecord
   has_many :twitters
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_twitters, through: :favorites, source: :twitter
 
   validates :name,  presence: true, length: { maximum: 30 }
   validates :email, presence: true, length: { maximum: 255 },

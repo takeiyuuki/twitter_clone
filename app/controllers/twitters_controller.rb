@@ -2,7 +2,7 @@
 
 class TwittersController < ApplicationController
   before_action :set_twitter, only: %i[show edit update destroy]
-  before_action :logged_in?, only: %i[show edit new destroy]
+  before_action :require_login, only: %i[show edit new destroy]
 
   def index
     @twitters = Twitter.all
@@ -18,6 +18,7 @@ class TwittersController < ApplicationController
 
   def create
     @twitter = Twitter.create(twitter_params)
+    @twitter.user_id = current_user.id
     if @twitter.save
       redirect_to twitters_path, notice: 'ブログを作成しました！'
     else
@@ -27,6 +28,7 @@ class TwittersController < ApplicationController
 
   def show
     # @twitter = Twitter.find(params[:id])
+    @favorite = current_user.favorites.find_by(twitter_id: @twitter.id)
   end
 
   def edit
@@ -49,6 +51,7 @@ class TwittersController < ApplicationController
 
   def confirm
     @twitter = Twitter.new(twitter_params)
+    @twitter.user_id = current_user.id
     render :new if @twitter.invalid?
   end
 
@@ -62,5 +65,12 @@ class TwittersController < ApplicationController
 
   def set_twitter
     @twitter = Twitter.find(params[:id])
+  end
+
+  def require_login
+    unless logged_in?
+      flash[:error] = 'You must be logged in to access this section'
+      redirect_to new_session_path
+    end
   end
 end
